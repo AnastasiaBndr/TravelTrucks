@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { selectCampers } from "../../redux/selectors";
 
 
+
 export default function Header() {
 
     const campers = useSelector(selectCampers || []);

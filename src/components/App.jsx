@@ -9,13 +9,14 @@ import { fetchCampers } from '../redux/campersOps';
 
 import './App.css'
 import css from "./App.module.css"
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
   const dispatch = useDispatch();
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
-    dispatch(fetchCampers(2));
+    dispatch(fetchCampers(page));
   }, [dispatch])
 
   return (
