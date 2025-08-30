@@ -1,0 +1,8 @@
+:root {
+  --logo-color: #475467;
+  --active-color:#D84343;
+}
+
+.catalog-container{
+  display: flex;
+}

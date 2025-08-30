@@ -1,0 +1,9 @@
+#root {
+  width: 100%;
+}
+
+.main-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

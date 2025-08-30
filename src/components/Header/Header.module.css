@@ -1,0 +1,40 @@
+:root {
+  --logo-color: #475467;
+  --active-color:#D84343;
+}
+
+.header-container {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 24px 64px;
+  box-sizing: border-box;
+}
+
+.travel-trucks {
+  font-weight: 900;
+  font-size: 20px;
+}
+
+.travel {
+  color: var(--logo-color);
+}
+
+.header-container div:nth-child(2) {
+  justify-self: center;
+  align-self: center;
+}
+
+.links-container {
+  display: flex;
+  gap: 32px;
+}
+
+.links-container a {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.active{
+color: var(--active-color);
+}

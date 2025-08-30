@@ -1,0 +1,22 @@
+:root{
+    --button-color:#E44848;
+    --button-hover-color:#D84343;
+    --font-color:#FFFFFF;
+}
+
+.button{
+    width: 173px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    background-color: var(--button-color);
+    border-radius: 40px;
+    color: var(--font-color);
+}
+
+.button:hover,.button:focus{
+    cursor: pointer;
+background-color: var(--button-hover-color);
+}
