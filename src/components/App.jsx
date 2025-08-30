@@ -8,6 +8,7 @@ import Catalog from "./Catalog";
 import { fetchCampers } from '../redux/campersOps';
 
 import './App.css'
+import css from "./App.module.css"
 import { useEffect } from 'react';
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
   return (
     <>
       <Header />
-      <div class="main-container">
+      <div className={css["main-container"]}>
         <Routes>
           <Route path='/' element={<Home />}></Route>
           <Route path='/catalog' element={<Catalog />}></Route>

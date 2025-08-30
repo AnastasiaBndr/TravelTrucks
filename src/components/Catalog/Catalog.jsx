@@ -22,7 +22,6 @@ export default function Header() {
                     {campers.map(camper => {
                         return <li key={camper.id}>
                             <Card
-                                id={camper.id}
                                 name={camper.name}
                                 price={camper.price}
                                 rating={camper.rating}

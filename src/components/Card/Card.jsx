@@ -1,6 +1,6 @@
 import css from "./Card.module.css";
 
-export default function Card({ id, name, location, description, price, rating,image }) {
+export default function Card({ name, location, description, price, rating,image }) {
     return (
         <>
             <img src={image.thumb} alt={description} />
