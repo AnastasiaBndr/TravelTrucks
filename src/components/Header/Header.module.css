@@ -1,6 +1,7 @@
 :root {
   --logo-color: #475467;
   --active-color:#D84343;
+  --header-background:#F7F7F7;
 }
 
 .header-container {
@@ -9,6 +10,7 @@
   grid-template-columns: repeat(3, 1fr);
   padding: 24px 64px;
   box-sizing: border-box;
+  background-color: var(--header-background);
 }
 
 .travel-trucks {

@@ -1,5 +1,103 @@
 :root {
   --logo-color: #475467;
-  --active-color:#D84343;
+  --active-color: #d84343;
+  --border-color: #dadde1;
+  --icon-color: #101828;
+  --star-icon-color: #ffc531;
+  --description-color: #475467;
+  --option-color: #f2f4f7;
 }
+
+.card-container {
+  display: flex;
+  box-sizing: border-box;
+  width: 888px;
+  height: 368px;
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 24px;
+  gap: 24px;
+}
+
+.name {
+  font-size: 24px;
+  font-weight: 600;
+  font-style: "Semi Bold";
+  margin-bottom: 8px;
+}
+
+.image {
+  width: 292px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.name-price-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.icon {
+  width: 24px;
+  height: 21px;
+  margin-left: 13px;
+}
+.icon use {
+  fill: currentColor;
+  color: var(--icon-color);
+}
+
+.icon:hover,
+.icon:focus {
+  cursor: pointer;
+}
+
+.icon:hover use,
+.icon:focus use {
+  color: var(--active-color);
+}
+
+.name-price-container span {
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.price-location-container {
+  margin-bottom: 24px;
+}
+
+.star use {
+  fill: #ffc531;
+}
+
+.icon-location {
+  margin-left: 16px;
+}
+
+.description {
+  color: var(--description-color);
+  display: inline-block;
+  max-width: 525px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 24px;
+}
+.options {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  width: 450px;
+  margin-bottom: 24px;
+}
+.option-item {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  background-color: var(--option-color);
+  border-radius: 100px;
+  padding: 12px 18px;
+  
+}
+
 
