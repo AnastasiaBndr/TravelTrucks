@@ -19,7 +19,7 @@ const fetchCampers = createAsyncThunk(
 
 const fetchById = createAsyncThunk(
   "campers/fetchById",
-  async (_, thunkAPI) => {
+  async (id, thunkAPI) => {
     try {
       const resp = await axios.get(`campers/${id}`);
       return resp.data;

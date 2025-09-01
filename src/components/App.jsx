@@ -1,33 +1,31 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { useEffect, useState, Suspense, lazy } from 'react';
+import { useEffect, useState, Suspense, lazy } from "react";
 
-import Header from './Header';
-import Home from './Home';
-import Loader from './Loader';
-import Camper from './Camper';
+import Header from "./Header";
+import Loader from "./Loader";
+import Features from "./Features";
+import Reviews from "./Reviews";
+import { fetchCampers } from "../redux/campersOps";
 
-import { fetchCampers } from '../redux/campersOps';
-
-import './App.css'
-import css from "./App.module.css"
-
+import "./App.css";
+import css from "./App.module.css";
 
 function App() {
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
 
-  const Catalog = lazy(() => import('./Catalog'));
+  const CatalogPage = lazy(() => import("../pages/CatalogPage"));
+  const HomePage = lazy(() => import("../pages/HomePage"));
+  const CamperPage = lazy(() => import("../pages/CamperPage"));
 
   useEffect(() => {
     dispatch(fetchCampers(page));
-  }, [dispatch, page])
+  }, [dispatch, page]);
 
   const handleNextPage = () => {
-    setPage(prev =>
-      prev += 1
-    );
-  }
+    setPage((prev) => (prev += 1));
+  };
 
   return (
     <>
@@ -35,16 +33,20 @@ function App() {
       <Suspense fallback={<Loader />}>
         <div className={css["main-container"]}>
           <Routes>
-            <Route path='/' element={<Home />}></Route>
-            <Route path='/catalog' element={<Catalog loadMore={handleNextPage} />}></Route>
-            <Route path='/catalog/:id' element={<Camper />}></Route>
+            <Route path="/" element={<HomePage />}></Route>
+            <Route
+              path="/catalog"
+              element={<CatalogPage loadMore={handleNextPage} />}
+            ></Route>
+            <Route path="/catalog/:id" element={<CamperPage />}>
+              <Route path="reviews" element={<Reviews />}></Route>
+              <Route path="features" element={<Features />}></Route>
+            </Route>
           </Routes>
         </div>
       </Suspense>
-
-
     </>
-  )
+  );
 }
 
-export default App
+export default App;

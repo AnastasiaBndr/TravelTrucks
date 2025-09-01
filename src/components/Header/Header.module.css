@@ -32,6 +32,10 @@
   gap: 32px;
 }
 
+.link:hover,.link:focus{
+cursor: pointer;
+}
+
 .links-container a {
   font-size: 16px;
   font-weight: 500;

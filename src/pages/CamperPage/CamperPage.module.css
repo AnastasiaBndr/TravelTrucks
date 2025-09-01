@@ -1,0 +1,18 @@
+.star use {
+  fill: #ffc531;
+}
+.images-container{
+    display: flex;
+    gap:48px;
+}
+.icon-location {
+  margin-left: 16px;
+}
+
+.image {
+  width: 292px;
+  height: 312px;
+
+  border-radius: 10px;
+  object-fit: cover;
+}

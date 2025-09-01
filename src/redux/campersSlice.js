@@ -14,7 +14,7 @@ const slice = createSlice({
   name: "campers",
   initialState: {
     items: [],
-    card:{},
+    camper:{},
     isLoading: false,
     error: null,
   },
@@ -31,7 +31,7 @@ const slice = createSlice({
       .addCase(fetchById.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.card = action.payload;
+        state.camper = action.payload;
       })
       .addCase(fetchById.rejected, handleRejected);;
   },

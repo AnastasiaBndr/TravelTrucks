@@ -12,7 +12,7 @@
   display: flex;
   box-sizing: border-box;
   width: 888px;
-  height: 368px;
+  min-height: 368px;
   border: 1px solid var(--border-color);
   border-radius: 20px;
   padding: 24px;
@@ -28,7 +28,7 @@
 
 .image {
   width: 292px;
-  height: 320px;
+  min-height: 100%;
   object-fit: cover;
   border-radius: 10px;
 }
@@ -62,7 +62,7 @@
   font-size: 24px;
 }
 
-.price-location-container {
+.reviews-location-container {
   margin-bottom: 24px;
 }
 
@@ -83,21 +83,3 @@
   text-overflow: ellipsis;
   margin-bottom: 24px;
 }
-.options {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  width: 450px;
-  margin-bottom: 24px;
-}
-.option-item {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  background-color: var(--option-color);
-  border-radius: 100px;
-  padding: 12px 18px;
-  
-}
-
-
