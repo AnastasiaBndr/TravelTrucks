@@ -1,12 +1,5 @@
-:root {
-  --logo-color: #475467;
-  --active-color: #d84343;
-  --border-color: #dadde1;
-  --icon-color: #101828;
-  --star-icon-color: #ffc531;
-  --description-color: #475467;
-  --option-color: #f2f4f7;
-}
+@import '../../assets/variables.css';
+
 
 .card-container {
   display: flex;
@@ -54,7 +47,7 @@
 
 .icon:hover use,
 .icon:focus use {
-  color: var(--active-color);
+  color: var(--active-icon-color);
 }
 
 .name-price-container span {

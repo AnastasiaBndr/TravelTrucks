@@ -36,6 +36,10 @@ export default function Catalog({ loadMore }) {
                         engine={camper.engine}
                         bathroom={camper.bathroom}
                         tv={camper.TV}
+                        gas={camper.gas}
+                        fridge={camper.refrigerator}
+                        water={camper.water}
+                        microwave={camper.microwave}
                       />
                     </li>
                   );

@@ -1,0 +1,14 @@
+:root {
+  --gradient: rgba(0, 0, 0, 0.2);
+  --logo-color: #475467;
+  --active-icon-color: #d84343;
+  --border-color: #dadde1;
+  --icon-color: #101828;
+  --star-icon-color: #ffc531;
+  --description-color: #475467;
+  --option-color: #eaecef;
+
+  --active-color:#D84343;
+  --header-background:#F7F7F7;
+  --form-description-color:#6C717B;
+}

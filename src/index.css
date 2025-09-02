@@ -17,7 +17,7 @@ body {
   color: #101828;
 }
 
-a,h1,h2,h3,button,li,ul,input{
+a,h1,h2,h3,button,li,ul,input,p{
  all:unset
 }
 

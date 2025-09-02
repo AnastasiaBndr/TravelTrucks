@@ -1,3 +1,4 @@
 import { swapTwoWords } from "./swapWordFunction";
 import capitalizeFirstLetter from "./capitalizeFirstLetter";
-export { swapTwoWords,capitalizeFirstLetter };
+import { formSchema } from './formShema';
+export { swapTwoWords, capitalizeFirstLetter, formSchema };

@@ -1,0 +1,13 @@
+@import "../../assets/variables.css";
+
+
+.features-container {
+  width: 631px;
+  background-color: var(--header-background);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 44px 52px;
+  border-radius: 10px;
+}

@@ -1,0 +1,41 @@
+import css from "./TruckTable.module.css";
+import { capitalizeFirstLetter } from "../../helpers";
+
+export default function TruckTable({
+  width,
+  tank,
+  height,
+  form,
+  length,
+  consumption,
+}) {
+  return (
+    <table>
+      <th className={css.title}>Vehicle details</th>
+      <tr>
+        <td className={css.first}>Form</td>
+        <td className={css.first}>{capitalizeFirstLetter(form)}</td>
+      </tr>
+      <tr>
+        <td>Length</td>
+        <td>{length}</td>
+      </tr>
+      <tr>
+        <td>Width</td>
+        <td>{width}</td>
+      </tr>
+      <tr>
+        <td>Height</td>
+        <td>{height}</td>
+      </tr>
+      <tr>
+        <td>Tank</td>
+        <td>{tank}</td>
+      </tr>
+      <tr>
+        <td>Consumption</td>
+        <td>{consumption}</td>
+      </tr>
+    </table>
+  );
+}

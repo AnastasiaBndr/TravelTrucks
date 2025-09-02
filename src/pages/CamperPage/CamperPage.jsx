@@ -8,6 +8,7 @@ import { selectCamper } from "../../redux/selectors";
 import { IconStar, IconLocation } from "../../assets/icons";
 
 import { swapTwoWords } from "../../helpers";
+import CamperForm from "../../components/CamperForm";
 
 import css from "./CamperPage.module.css";
 
@@ -23,16 +24,20 @@ export default function CamperPage() {
   return (
     <>
       {camper.rating && (
-        <div>
-          <h2>{camper.name}</h2>
-          <div className={css["reviews-location-container"]}>
-            <IconStar className={css.star} />
-            <span>
-              {camper.rating}({camper.reviews.length} Reviews)
-              <IconLocation className={css["icon-location"]} />{" "}
-              {swapTwoWords(camper.location)}
-            </span>
-            <p>€{camper.price}</p>
+        <div className={css["camper-page-container"]}>
+          <div className={css["name-reviews-price-container"]}>
+            <h2 className={css.name}>{camper.name}</h2>
+            <div className={css["reviews-location-container"]}>
+              <p>
+                <IconStar className={css.star} />
+                <span>
+                  {camper.rating}({camper.reviews.length} Reviews)
+                </span>
+                <IconLocation className={css["icon-location"]} />{" "}
+                {swapTwoWords(camper.location)}
+              </p>
+            </div>
+            <h2 className={css.price}>€{camper.price}</h2>
           </div>
           <ul className={css["images-container"]}>
             {camper.gallery.map((image) => {
@@ -43,13 +48,16 @@ export default function CamperPage() {
               );
             })}
           </ul>
-          <span>{camper.description}</span>
+          <p className={css.description}>{camper.description}</p>
           <div>
             <NavLink to={"features"}>Features</NavLink>
             <NavLink to={"reviews"}>Reviews</NavLink>
           </div>
-
-          <Outlet />
+          <div className={css["outlet-form-container"]}>
+            <Outlet />
+            <CamperForm/>
+</div>
+          
         </div>
       )}
     </>

@@ -1,15 +1,17 @@
 import { capitalizeFirstLetter } from "../../helpers";
 
 import {
-  IconHeart,
-  IconLocation,
-  IconStar,
   IconAC,
   IconBathroom,
   IconAutomatic,
   IconTV,
   IconFuel,
   IconKitchen,
+  IconFridge,
+  IconGas,
+  IconMicrowave,
+  IconWater,
+  IconRadio
 } from "../../assets/icons";
 
 import css from "./Categories.module.css";
@@ -21,6 +23,11 @@ export default function Categories({
   bathroom,
   tv,
   AC,
+  gas,
+  fridge,
+  water,
+  microwave,
+  radio
 }) {
   return (
     <ul className={css.options}>
@@ -48,6 +55,44 @@ export default function Categories({
         <li className={css["option-item"]}>
           <IconTV height={15} width={20} className={css["option-icon"]} />
           TV
+        </li>
+      )}
+      {gas && (
+        <li className={css["option-item"]}>
+          <IconGas height={20} width={20} className={css["option-icon"]} />
+          Gas
+        </li>
+      )}
+      {water && (
+        <li className={css["option-item"]}>
+          <IconWater height={22} width={19} className={css["option-icon"]} />
+          Water
+        </li>
+      )}
+      {fridge && (
+        <li className={css["option-item"]}>
+          <IconFridge height={20} width={20} className={css["option-icon"]} />
+          Refrigerator
+        </li>
+      )}
+      {microwave && (
+        <li className={css["option-item"]}>
+          <IconMicrowave
+            height={20}
+            width={20}
+            className={css["option-icon"]}
+          />
+          Microwave
+        </li>
+      )}
+      {radio && (
+        <li className={css["option-item"]}>
+          <IconRadio
+            height={20}
+            width={20}
+            className={css["option-icon"]}
+          />
+          Radio
         </li>
       )}
       {AC && (

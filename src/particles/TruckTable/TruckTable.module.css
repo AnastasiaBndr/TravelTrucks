@@ -1,0 +1,29 @@
+@import url("../../assets/variables.css");
+
+.title {
+  font-weight: 600;
+  width: 100%;
+  font-size: 20px;
+  text-align: left;
+}
+.title::after {
+  content: "";
+  display: block;
+  position: absolute;
+  margin-top: 24px;
+  height: 1px;
+  width: 527px;
+  background-color: var(--border-color);
+}
+
+td {
+  padding: 8px;
+  font-weight: 500;
+}
+.first {
+  padding-top: 48px;
+}
+
+tr td:nth-child(2) {
+  text-align: right;
+}

@@ -1,12 +1,38 @@
+@import "../../assets/variables.css";
+
+.camper-page-container {
+  padding-top: 48px;
+  margin: 0 auto;
+  max-width: 1312px;
+}
+.name-reviews-price-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.reviews-location-container span {
+  text-decoration: underline;
+}
+
+.camper-page-container h2 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
 .star use {
   fill: #ffc531;
 }
-.images-container{
-    display: flex;
-    gap:48px;
+.images-container {
+  display: flex;
+  gap: 48px;
 }
 .icon-location {
   margin-left: 16px;
+}
+
+.image-container {
+  margin-top: 28px;
 }
 
 .image {
@@ -15,4 +41,23 @@
 
   border-radius: 10px;
   object-fit: cover;
+}
+
+.description {
+  display: block;
+  color: var(--description-color);
+  margin-top: 28px;
+}
+
+.active::before {
+  content: "";
+  width: 100%;
+}
+
+.outlet-form-container{
+
+  display: flex;
+  margin-top: 44px;
+  gap: 40px;
+
 }

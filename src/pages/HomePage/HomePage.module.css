@@ -1,14 +1,10 @@
-:root {
-  --temporary-color: rgb(71, 84, 103);
-  --gradient: rgba(0, 0, 0, 0.2);
-  --text-color:#F7F7F7;
-}
+@import '../../assets/variables.css';
 
 .hero {
   width: 100%;
   max-width: 360px;
   height: 200px;
-  background-color: var(--temporary-color);
+  background-color: var( --logo-color);
   transform: scaleX(-1);
     background-size: cover;
     background-repeat: no-repeat;
@@ -28,7 +24,7 @@
 }
 
 .content-container{
-  color: var(--text-color);
+  color: var(--header-background);
   box-sizing: border-box;
   padding: 64px;
   transform: scaleX(-1);

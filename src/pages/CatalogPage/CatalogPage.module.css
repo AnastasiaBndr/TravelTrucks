@@ -1,9 +1,4 @@
-:root {
-  --logo-color: #475467;
-  --active-color: #d84343;
-  --border-color: #dadde1;
-  --catalog-font-color: #101828;
-}
+@import '../../assets/variables.css';
 
 
 .catalog-button-container{
@@ -32,7 +27,7 @@
   background-color: transparent;
   border: 1px solid var(--border-color);
   border-radius: 40px;
-  color: var(--catalog-font-color);
+  color: var(--icon-color);
 }
 
 .load-more-button:hover,

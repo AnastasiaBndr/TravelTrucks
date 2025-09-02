@@ -22,6 +22,10 @@ export default function Card({
   kitchen,
   engine,
   bathroom,
+  gas,
+  fridge,
+  water,
+  microwave,
 }) {
   const navigate = useNavigate();
 
@@ -54,6 +58,10 @@ export default function Card({
             kitchen={kitchen}
             AC={AC}
             bathroom={bathroom}
+            gas={gas}
+            fridge={fridge}
+            water={water}
+            microwave={microwave}
           />
           <Button onClick={() => navigate(`/catalog/${id}`)}>Show more</Button>
         </div>

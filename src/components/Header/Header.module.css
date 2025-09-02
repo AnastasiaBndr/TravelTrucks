@@ -1,8 +1,4 @@
-:root {
-  --logo-color: #475467;
-  --active-color:#D84343;
-  --header-background:#F7F7F7;
-}
+@import "../../assets/variables.css";
 
 .header-container {
   display: grid;
@@ -32,8 +28,9 @@
   gap: 32px;
 }
 
-.link:hover,.link:focus{
-cursor: pointer;
+.link:hover,
+.link:focus {
+  cursor: pointer;
 }
 
 .links-container a {
@@ -41,6 +38,6 @@ cursor: pointer;
   font-weight: 500;
 }
 
-.active{
-color: var(--active-color);
+.active {
+  color: var(--active-color);
 }
