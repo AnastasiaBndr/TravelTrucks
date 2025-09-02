@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useParams, NavLink, Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import clsx from "clsx";
 
 import { fetchById } from "../../redux/campersOps";
 import { selectCamper } from "../../redux/selectors";
@@ -11,6 +12,11 @@ import { swapTwoWords } from "../../helpers";
 import CamperForm from "../../components/CamperForm";
 
 import css from "./CamperPage.module.css";
+
+const buildLinkClass = ({ isActive }) => {
+  return clsx(css.navigation, isActive && css.active);
+};
+
 
 export default function CamperPage() {
   const id = useParams().id;
@@ -42,22 +48,25 @@ export default function CamperPage() {
           <ul className={css["images-container"]}>
             {camper.gallery.map((image) => {
               return (
-                <li className={css["image-container"]}>
+                <li key={image.id} className={css["image-container"]}>
                   <img className={css["image"]} src={image.thumb}></img>
                 </li>
               );
             })}
           </ul>
           <p className={css.description}>{camper.description}</p>
-          <div>
-            <NavLink to={"features"}>Features</NavLink>
-            <NavLink to={"reviews"}>Reviews</NavLink>
+          <div className={css["navigation-container"]}>
+            <NavLink className={buildLinkClass} to={"features"}>
+              Features
+            </NavLink>
+            <NavLink className={buildLinkClass} to={"reviews"}>
+              Reviews
+            </NavLink>
           </div>
           <div className={css["outlet-form-container"]}>
             <Outlet />
-            <CamperForm/>
-</div>
-          
+            <CamperForm />
+          </div>
         </div>
       )}
     </>

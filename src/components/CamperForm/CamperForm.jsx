@@ -1,111 +1,112 @@
-import css from "./CamperForm.module.css";
-
-import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useId } from "react";
-import { nanoid } from "nanoid";
-
-import { formSchema } from "../../helpers";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import './CustomDateRangePicker.css'
+import css from "./CamperForm.module.css";
 import Button from "../../particles/Button";
+import { formSchema } from "../../helpers";
 
-export default function CamperForm({ addContact }) {
+export default function CamperForm() {
   const nameFieldId = useId();
   const emailFieldId = useId();
   const bookingDateId = useId();
-  const commentField = useId();
+  const commentFieldId = useId();
 
   const initialValues = {
     name: "",
     email: "",
     bookingDate: null,
+    comment: "",
   };
 
   const handleSubmit = (values, actions) => {
-    addContact({ ...values, id: nanoid() });
+    console.log("📝 Submitted values:", values);
+    actions.setSubmitting(false);
     actions.resetForm();
   };
 
   return (
     <div className={css["form-container"]}>
       <h3 className={css.title}>Book your campervan now</h3>
-      <p className={css.description}>Stay connected! We are always ready to help you.</p>
+      <p className={css.description}>
+        Stay connected! We are always ready to help you.
+      </p>
+
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
         validationSchema={formSchema}
       >
-        <Form className={css["formik-container"]}>
-          <div className={css["fields-container"]}>
-            <div className={css["name-field-container"]}>
-              <label className={css.label} htmlFor={nameFieldId}>
-                Name*
-              </label>
-              <Field
-                className={css.field}
-                type="text"
-                name="name"
-                id={nameFieldId}
-              />
-              <ErrorMessage
-                className={css.error}
-                name="name"
-                component="span"
-              />
+        {({ values, setFieldValue, touched, errors }) => (
+          <Form className={css["formik-container"]}>
+            <div className={css["fields-container"]}>
+              <div>
+                <Field
+                  className={css.field}
+                  type="text"
+                  name="name"
+                  id={nameFieldId}
+                  placeholder="Name*"
+                />
+                <ErrorMessage
+                  className={css.error}
+                  name="name"
+                  component="span"
+                />
+              </div>
+
+              <div>
+                <Field
+                  className={css.field}
+                  type="email"
+                  name="email"
+                  id={emailFieldId}
+                  placeholder="Email*"
+                />
+                <ErrorMessage
+                  className={css.error}
+                  name="email"
+                  component="span"
+                />
+              </div>
+
+              <div>
+                <DatePicker
+                  id={bookingDateId}
+                  selected={values.bookingDate}
+                  onChange={(date) => setFieldValue("bookingDate", date)}
+                  placeholderText="Booking date*"
+                  className={css.field}
+                  dateFormat="dd/MM/yyyy"
+                />
+                {touched.bookingDate && errors.bookingDate && (
+                  <span className={css.error}>{errors.bookingDate}</span>
+                )}
+              </div>
+
+              <div>
+                <Field
+                  className={css["comment-field"]}
+                  type="text"
+                  name="comment"
+                  id={commentFieldId}
+                  placeholder="Comment*"
+                  as="textarea"
+                />
+                <ErrorMessage
+                  className={css.error}
+                  name="comment"
+                  component="span"
+                />
+              </div>
             </div>
 
-            <div className={css["name-field-container"]}>
-              <label className={css.label} htmlFor={emailFieldId}>
-                Email*
-              </label>
-              <Field
-                className={css.field}
-                type="text"
-                name="email"
-                id={emailFieldId}
-              />
-              <ErrorMessage
-                className={css.error}
-                name="email"
-                component="span"
-              />
-            </div>
-
-            <div className={css["name-field-container"]}>
-              <label className={css.label} htmlFor={bookingDateId}>
-                Booking date*
-              </label>
-              <Field
-                className={css.field}
-                type="text"
-                name="booking-date"
-                id={bookingDateId}
-              />
-              <ErrorMessage
-                className={css.error}
-                name="booking-date"
-                component="span"
-              />
-            </div>
-
-            <div className={css["comment-field-container"]}>
-              <label className={css.label} htmlFor={commentField}>
-                Comment
-              </label>
-              <Field
-                className={css["comment-field"]}
-                type="text"
-                name="comment"
-                id={commentField}
-              />
-              <ErrorMessage
-                className={css.error}
-                name="comment"
-                component="span"
-              />
-            </div>
-          </div>
-
-          <Button className={css["submit-button"]}type="submit">Add contact</Button>
-        </Form>
+            <Button className={css["submit-button"]}>
+              Submit
+            </Button>
+          </Form>
+        )}
       </Formik>
     </div>
   );

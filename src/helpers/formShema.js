@@ -9,6 +9,6 @@ export const formSchema = Yup.object().shape({
         .min(4, "Too short!")
         .max(50, "Too long!")
         .required("Required"),
-    bookingDate: Yup.date().required("Required!"),
+    bookingDate: Yup.string().required("Required!"),
     comment: Yup.string().max(500, "Too long!").min(0, "Write anything!")
 });
