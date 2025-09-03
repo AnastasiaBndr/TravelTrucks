@@ -14,7 +14,8 @@ const slice = createSlice({
   name: "campers",
   initialState: {
     items: [],
-    camper:{},
+    camper: {},
+    totalHits:0,
     isLoading: false,
     error: null,
   },
@@ -24,7 +25,14 @@ const slice = createSlice({
       .addCase(fetchCampers.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.items = action.payload;
+        state.totalHits = action.payload.total;
+        state.items = [
+          ...state.items,
+          ...action.payload.items.filter(
+            camper => !state.items.some(item => item.id === camper.id)
+          )
+        ];
+
       })
       .addCase(fetchCampers.rejected, handleRejected)
       .addCase(fetchById.pending, handlePending)

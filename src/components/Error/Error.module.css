@@ -1,0 +1,12 @@
+@import url('../../assets/variables.css');
+
+.container{
+    width: 887px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+
+    color: var(--form-description-color);
+}

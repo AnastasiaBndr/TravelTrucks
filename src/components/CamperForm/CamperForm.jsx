@@ -1,17 +1,23 @@
 import { useId } from "react";
+import toast, { Toaster } from "react-hot-toast";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import './CustomDateRangePicker.css'
-import css from "./CamperForm.module.css";
+
 import Button from "../../particles/Button";
 import { formSchema } from "../../helpers";
+
+import "react-datepicker/dist/react-datepicker.css";
+import "./CustomDateRangePicker.css";
+import css from "./CamperForm.module.css";
+import { useSelector } from "react-redux";
+import { selectCamper } from "../../redux/selectors";
 
 export default function CamperForm() {
   const nameFieldId = useId();
   const emailFieldId = useId();
   const bookingDateId = useId();
   const commentFieldId = useId();
+  const camper = useSelector(selectCamper);
 
   const initialValues = {
     name: "",
@@ -21,7 +27,22 @@ export default function CamperForm() {
   };
 
   const handleSubmit = (values, actions) => {
+    console.log("Yaaay");
+    toast.success(
+      `Successful! Your ${camper.name} on ${values.bookingDate.toLocaleDateString(
+        "en-GB",
+        {
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+        }
+      )} is almost ready!`,
+      {
+        duration: 4000,
+      }
+    );
     actions.setSubmitting(false);
+
     actions.resetForm();
   };
 
@@ -104,6 +125,7 @@ export default function CamperForm() {
             <Button type="submit" className={css["submit-button"]}>
               Submit
             </Button>
+            <Toaster />
           </Form>
         )}
       </Formik>

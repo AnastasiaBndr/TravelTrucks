@@ -6,6 +6,7 @@ import Header from "./Header";
 import Loader from "./Loader";
 import Features from "./Features";
 import Reviews from "./Reviews";
+
 import { fetchCampers } from "../redux/campersOps";
 
 import "./App.css";
@@ -18,6 +19,7 @@ function App() {
   const CatalogPage = lazy(() => import("../pages/CatalogPage"));
   const HomePage = lazy(() => import("../pages/HomePage"));
   const CamperPage = lazy(() => import("../pages/CamperPage"));
+  const FeaturedPage = lazy(() => import("../pages/FeaturedPage"));
 
   useEffect(() => {
     dispatch(fetchCampers(page));
@@ -42,6 +44,7 @@ function App() {
               <Route path="reviews" element={<Reviews />}></Route>
               <Route path="features" element={<Features />}></Route>
             </Route>
+            <Route path="/featured" element={<FeaturedPage />}></Route>
           </Routes>
         </div>
       </Suspense>

@@ -1,51 +1,75 @@
 import css from "./Card.module.css";
 
-import { useNavigate } from "react-router-dom";
+import { addFeatured, deleteFeatured } from "../../redux/featuredSlice";
+import { selectFeatured } from "../../redux/selectors";
 
 import { swapTwoWords } from "../../helpers";
 import { IconHeart, IconLocation, IconStar } from "../../assets/icons";
 import Button from "../../particles/Button";
 import Categories from "../../particles/Categories";
+import { useDispatch, useSelector } from "react-redux";
+import clsx from "clsx";
 
-export default function Card({
-  id,
-  name,
-  location,
-  reviews = 0,
-  description,
-  price,
-  rating,
-  image,
-  tv,
-  transmission,
-  AC,
-  kitchen,
-  engine,
-  bathroom,
-  gas,
-  fridge,
-  water,
-  microwave,
-}) {
-  const navigate = useNavigate();
+export default function Card({ camper }) {
+  const {
+    id,
+    name,
+    location,
+    reviews = 0,
+    description,
+    price,
+    rating,
+    gallery,
+    tv,
+    transmission,
+    AC,
+    kitchen,
+    engine,
+    bathroom,
+    gas,
+    refrigerator,
+    water,
+    microwave,
+  } = camper;
+  const dispatch = useDispatch();
+  const featuredCampers = useSelector(selectFeatured);
+
+  const handleAddFavorite = () => {
+    const isFavorite = featuredCampers.some((item) => item.id === camper.id);
+
+    if (isFavorite) {
+      dispatch(deleteFeatured(camper.id));
+    } else {
+      dispatch(addFeatured(camper));
+    }
+  };
 
   return (
     <>
       <div className={css["card-container"]}>
-        <img className={css.image} src={image.thumb} alt={description} />
+        <img className={css.image} src={gallery[0].thumb} alt={description} />
         <div className={css["info-container"]}>
           <div className={css["name-price-container"]}>
             <h3 className={css.name}>{name}</h3>
             <div>
-              <p>€{price}</p>
-              <IconHeart className={css.icon} />
+              <p>€{price},00</p>
+              <button type="button" onClick={handleAddFavorite}>
+                <IconHeart
+                  className={clsx(
+                    css.icon,
+                    featuredCampers.some((item) => item.id === camper.id) &&
+                      css.featured
+                  )}
+                />
+              </button>
             </div>
           </div>
 
           <div className={css["reviews-location-container"]}>
             <IconStar className={css.star} />
+
             <span>
-              {rating}({reviews} Reviews)
+              {rating}({reviews.length} Reviews)
               <IconLocation className={css["icon-location"]} />{" "}
               {swapTwoWords(location)}
             </span>
@@ -59,11 +83,13 @@ export default function Card({
             AC={AC}
             bathroom={bathroom}
             gas={gas}
-            fridge={fridge}
+            fridge={refrigerator}
             water={water}
             microwave={microwave}
           />
-          <Button onClick={() => navigate(`/catalog/${id}`)}>Show more</Button>
+          <Button onClick={() => window.open(`/catalog/${id}`, "_blank")}>
+            Show more
+          </Button>
         </div>
       </div>
     </>

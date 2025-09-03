@@ -1,16 +1,16 @@
 @import url("../../assets//variables.css");
 
-.vehicle-equipment-container {
+.vehicle-container {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
   margin-top: 24px;
 }
 
-.equipment-input {
+.input {
   display: none;
 }
-.equipment-item {
+.item {
   width: 112px;
   height: 96px;
   box-sizing: border-box;
@@ -32,11 +32,11 @@
   transition: var(--border-color-transition);
 }
 
-.equipment-item:hover,
-.equipment-item:focus {
+.item:hover,
+.item:focus {
   border-color: var(--avatar-letter-color);
 }
 
-.equipment-input:checked + .equipment-item {
+.input:checked + .item {
   border-color: var(--avatar-letter-color);
 }

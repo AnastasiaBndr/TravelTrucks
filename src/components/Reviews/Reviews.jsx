@@ -11,6 +11,7 @@ export default function Reviews() {
   const reviews = camper.reviews || [];
   const loading = useSelector(selectIsLoading);
 
+
   const handleStars = (review) => {
     const stars = [];
     for (let i = 0; i < 5; i++) {

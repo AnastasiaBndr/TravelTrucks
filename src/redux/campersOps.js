@@ -9,8 +9,8 @@ const fetchCampers = createAsyncThunk(
   "campers/fetchAll",
   async (page, thunkAPI) => {
     try {
-      const resp = await axios.get(`campers?page=${page}&limit=${4}`);
-      return resp.data.items;
+      const resp = await axios.get(`campers?page=${page}&limit=${15}`);
+      return resp.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }

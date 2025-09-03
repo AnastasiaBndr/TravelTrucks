@@ -6,42 +6,55 @@ import Button from "../../particles/Button";
 import { swapTwoWords } from "../../helpers";
 
 import { IconLocation } from "../../assets/icons";
-import { selectCampers, selectFilter, selectFilteredCampers } from "../../redux/selectors";
+import { selectCampers } from "../../redux/selectors";
 
 import css from "./SideMenu.module.css";
 import { setFilter } from "../../redux/filterSlice";
 
+const opposites = {
+  automatic: "manual",
+  manual: "automatic",
+  petrol: "diesel",
+  diesel: "petrol",
+};
+
 export default function SideMenu() {
   const campers = useSelector(selectCampers);
-  const selectFiltered = useSelector(selectFilteredCampers);
-  const filter = useSelector(selectFilter);
   const dispatch = useDispatch();
   const locations = [...new Set(campers.map((c) => c.location))];
+  const equipmentProp = "equipment";
+  const typeProp = "type";
 
-  console.log(selectFiltered);
-
-  const handleChange = (event) => {
-    dispatch(setFilter({ location: event.target.value }));
+  const handleChange = (event, key) => {
+    dispatch(setFilter({ [key]: event.target.value }));
   };
 
- const handleSelectChange = (e,key) => {
-   const value = e.target.value;
-   const checked = e.target.checked;
+  const handleSelectChange = (e) => {
+    const value = e.target.value.toLowerCase();
+    const checked = e.target.checked;
 
-   dispatch((dispatch, getState) => {
-     const currentValues = getState().filters.filter[key];
+    dispatch((dispatch, getState) => {
+      const currentValues = getState().filters.filter.equipment;
 
-     let updatedValues;
-     if (checked) {
-       updatedValues = [...new Set([...currentValues, value])];
-     } else {
-       updatedValues = currentValues.filter((t) => t !== value);
-     }
+      let updatedValues = [...currentValues];
 
-     dispatch(setFilter({ [key]: updatedValues }));
-   });
- };
+      if (checked) {
+        const opposite = opposites[value];
 
+        if (opposite) {
+          updatedValues = updatedValues.filter((v) => v !== opposite);
+        }
+
+        if (!updatedValues.includes(value)) {
+          updatedValues.push(value);
+        }
+      } else {
+        updatedValues = updatedValues.filter((v) => v !== value);
+      }
+
+      dispatch(setFilter({ equipment: updatedValues }));
+    });
+  };
 
   return (
     <div className={css["side-menu"]}>
@@ -61,14 +74,14 @@ export default function SideMenu() {
           />
           <select
             id="location"
-            onChange={handleChange}
+            onChange={(e) => handleChange(e, "location")}
             className={css["location-select"]}
             type="text"
-            value={filter.location}
           >
+            <option className={css.option} value={""}></option>
             {locations.map((location) => {
               return (
-                <option className={css.option} value={location}>
+                <option key={location} className={css.option} value={location}>
                   {swapTwoWords(location)}
                 </option>
               );
@@ -81,16 +94,16 @@ export default function SideMenu() {
         <div>
           <h3 className={css["category-title"]}>Vehicle equipment</h3>
           <SideMenuEquipment
-            typeProp={"equipment"}
-            onChange={(e) => handleSelectChange(e, "equipment")}
+            typeProp={equipmentProp}
+            onChange={(e) => handleSelectChange(e, equipmentProp)}
           />
         </div>
 
         <div>
           <h3 className={css["category-title"]}>Vehicle type</h3>
           <SideMenuEquipment
-            typeProp={"type"}
-            onChange={(e) => handleSelectChange(e, "type")}
+            typeProp={typeProp}
+            onChange={(e) => handleChange(e, typeProp)}
           />
         </div>
       </div>
