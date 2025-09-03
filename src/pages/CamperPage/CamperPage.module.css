@@ -21,7 +21,7 @@
 }
 
 .star use {
-  fill: #ffc531;
+  fill: var(--star-icon-color);
 }
 .images-container {
   display: flex;
@@ -63,7 +63,8 @@
 
 .outlet-form-container {
   display: flex;
-  margin-top: 44px;
+  justify-content: center;
+  margin-top: 56px;
   gap: 40px;
 }
 

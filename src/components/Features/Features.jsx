@@ -1,14 +1,15 @@
 import css from "./Features.module.css";
 import { useSelector } from "react-redux";
 
-import { selectCamper } from "../../redux/selectors";
+import { selectCamper, selectIsLoading } from "../../redux/selectors";
 
 import Categories from "../../particles/Categories";
 import TruckTable from "../../particles/TruckTable";
-import Form from "../CamperForm";
+import Loader from "../Loader";
 
 export default function Features() {
   const camper = useSelector(selectCamper);
+  const loading = useSelector(selectIsLoading);
   const {
     engine,
     transmission,
@@ -28,10 +29,10 @@ export default function Features() {
     length,
     consumption,
   } = camper;
-  console.log(camper);
 
   return (
-
+    <>
+      {loading && <Loader/>}
       <div className={css["features-container"]}>
         <Categories
           engine={engine}
@@ -55,6 +56,6 @@ export default function Features() {
           height={height}
         />
       </div>
-
+    </>
   );
 }

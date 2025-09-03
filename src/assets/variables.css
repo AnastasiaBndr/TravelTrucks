@@ -5,6 +5,7 @@
   --border-color: #dadde1;
   --icon-color: #101828;
   --star-icon-color: #ffc531;
+  --star-icon-gray:#F2F4F7;
   --description-color: #475467;
   --option-color: #eaecef;
 
@@ -12,4 +13,7 @@
   --header-background:#F7F7F7;
   --form-description-color:#6C717B;
   --white:#FFF;
+  --avatar-letter-color:#E44848;
+
+  --border-color-transition:border-color 0.2s ease;
 }

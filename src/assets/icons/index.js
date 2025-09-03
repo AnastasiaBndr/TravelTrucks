@@ -14,7 +14,9 @@ import IconGas from './gas.svg';
 import IconGrid1x2 from './grid-1x2.svg';
 import IconGrid3x3 from './grid-3x3.svg';
 import IconGrid from './grid.svg';
-import IconRadio from "./radio.svg"
+import IconRadio from "./radio.svg";
+import IconPetrol from './petrol.svg';
+
 export {
   IconHeart,
   IconLocation,
@@ -32,5 +34,6 @@ export {
   IconGrid3x3,
   IconMicrowave,
   IconWater,
-  IconRadio
+  IconRadio,
+  IconPetrol
 };

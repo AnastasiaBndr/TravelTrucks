@@ -1,21 +1,25 @@
-import css from "./CatalogPage.module.css";
-import SideMenu from "../../components/SideMenu/SideMenu";
-import Card from "../../components/Card/Card";
 import { useSelector } from "react-redux";
 
-import { selectCampers } from "../../redux/selectors";
+import SideMenu from "../../components/SideMenu/SideMenu";
+import Loader from "../../components/Loader";
+import Card from "../../components/Card/Card";
+
+import css from "./CatalogPage.module.css";
+
+import { selectCampers, selectIsLoading } from "../../redux/selectors";
 
 export default function Catalog({ loadMore }) {
   const campers = useSelector(selectCampers || []);
+  const loading = useSelector(selectIsLoading);
 
-  console.log(campers);
 
   return (
     <>
+      {loading && <Loader />}
       {campers.length > 0 && (
         <div className={css["catalog-button-container"]}>
           <div className={css["catalog-container"]}>
-            <SideMenu />
+            <SideMenu/>
             <div>
               <ul className={css["catalog-items"]}>
                 {campers.map((camper) => {

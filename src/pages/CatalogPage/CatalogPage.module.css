@@ -8,6 +8,7 @@
 .catalog-container {
   display: flex;
   margin-bottom: 40px;
+  gap:64px;
 }
 
 .catalog-items {

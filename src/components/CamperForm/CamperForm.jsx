@@ -21,7 +21,6 @@ export default function CamperForm() {
   };
 
   const handleSubmit = (values, actions) => {
-    console.log("📝 Submitted values:", values);
     actions.setSubmitting(false);
     actions.resetForm();
   };
@@ -102,7 +101,7 @@ export default function CamperForm() {
               </div>
             </div>
 
-            <Button className={css["submit-button"]}>
+            <Button type="submit" className={css["submit-button"]}>
               Submit
             </Button>
           </Form>

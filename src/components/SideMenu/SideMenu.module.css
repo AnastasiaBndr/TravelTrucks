@@ -1,1 +1,77 @@
+@import url('../../assets/variables.css');
 
+.side-menu{
+    width: 360px;
+}
+.location-title{
+    font-size: 16px;
+    color: var(--form-description-color);
+    
+}
+
+
+.location-select{
+    margin-top: 8px;
+background-color:var(--header-background);
+width:360px;
+height: 56px;
+border-radius: 12px;
+box-sizing: border-box;
+padding:16px 16px 16px 48px;
+}
+
+.location-select:hover,.location-select:focus{
+    cursor: pointer;
+}
+
+.location-select,::picker(select){
+appearance: base-select;
+}
+
+::picker(select){
+border-bottom-left-radius: 12px;
+border-bottom-right-radius: 12px;
+border-color: var(--border-color);
+border-top: none;
+}
+.location-select::picker-icon{
+    display: none;
+}
+
+.input-icon-container{
+    position: relative;
+}
+
+.location-icon{
+    position: absolute;
+    top:24px;
+    left:20px;
+}
+.category-title{
+    font-weight: 600;
+    font-size: 20px;
+
+}
+.category-title::after{
+    content: '';
+    display: block;
+    margin-top: 24px;
+    
+    height: 1px;
+    width: 100%;
+    background-color: var(--border-color);
+}
+
+.filters-container{
+    display: flex;
+    margin-bottom: 40px;
+    flex-direction: column;
+    gap:32px;
+    margin-top: 40px;
+}
+
+.filters-title{
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--description-color);
+}
