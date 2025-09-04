@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
+import clsx from "clsx";
 
 import { selectCampers, selectFilter } from "../../redux/selectors";
 import { setFilter } from "../../redux/filterSlice";
@@ -72,13 +73,19 @@ export default function SideMenu() {
           <IconLocation
             width={20}
             height={20}
-            className={css["location-icon"]}
+            className={clsx(
+              css["location-icon"],
+              location === "" && css["icon-placeholder"]
+            )}
           />
           <select
             id="location"
             onChange={(e) => handleFieldChange(e, "location")}
-            className={css["location-select"]}
             value={typeof location === `string` ? location : ""}
+            className={clsx(
+              css["location-select"],
+              location === "" && css.placeholder
+            )}
           >
             <option className={css.option} value=""></option>
             {locations.map((loc) => (
@@ -115,7 +122,9 @@ export default function SideMenu() {
         </div>
       </div>
 
-      <Button type="submit" className={css["side-menu-button"]}>Search</Button>
+      <Button type="submit" className={css["side-menu-button"]}>
+        Search
+      </Button>
     </form>
   );
 }

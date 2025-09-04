@@ -4,6 +4,12 @@
   width: 100%;
 }
 
+
+.icon-placeholder use {
+    color: var(--form-description-color);
+  fill: var(--form-description-color);
+}
+
 .side-menu-button {
   margin: 0 auto;
 }
@@ -25,6 +31,11 @@
 .location-select:hover,
 .location-select:focus {
   cursor: pointer;
+}
+
+.placeholder::before {
+  content: "City";
+  color: var(--form-description-color);
 }
 
 .location-select,
