@@ -1,15 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
 
-import SideMenuEquipment from "../../particles/SideMenuEquipment";
+import { selectCampers, selectFilter } from "../../redux/selectors";
+import { setFilter } from "../../redux/filterSlice";
+
+import SideMenuFilters from "../../particles/SideMenuFilters";
 import Button from "../../particles/Button";
-
+import { IconLocation } from "../../assets/icons";
 import { swapTwoWords } from "../../helpers";
 
-import { IconLocation } from "../../assets/icons";
-import { selectCampers } from "../../redux/selectors";
-
 import css from "./SideMenu.module.css";
-import { setFilter } from "../../redux/filterSlice";
 
 const opposites = {
   automatic: "manual",
@@ -19,51 +19,53 @@ const opposites = {
 };
 
 export default function SideMenu() {
-  const campers = useSelector(selectCampers);
   const dispatch = useDispatch();
-  const locations = [...new Set(campers.map((c) => c.location))];
-  const equipmentProp = "equipment";
-  const typeProp = "type";
+  const campers = useSelector(selectCampers);
+  const filter = useSelector(selectFilter);
 
-  const handleChange = (event, key) => {
-    dispatch(setFilter({ [key]: event.target.value }));
+  const [equipment, setEquipment] = useState(filter.equipment);
+  const [location, setLocation] = useState(filter.location ?? "");
+  const [type, setType] = useState(filter.type);
+
+  const locations = [...new Set(campers.map((c) => c.location))];
+
+  const handleDataSubmit = (e) => {
+    e.preventDefault();
+    dispatch(setFilter({ equipment, location, type }));
   };
 
-  const handleSelectChange = (e) => {
+  const handleFieldChange = (e, field) => {
+    const value = e.target.value;
+    if (field === "location") setLocation(value);
+    if (field === "type") setType(value);
+  };
+
+  const handleEquipmentChange = (e) => {
     const value = e.target.value.toLowerCase();
     const checked = e.target.checked;
 
-    dispatch((dispatch, getState) => {
-      const currentValues = getState().filters.filter.equipment;
+    let updatedValues = [...equipment];
 
-      let updatedValues = [...currentValues];
-
-      if (checked) {
-        const opposite = opposites[value];
-
-        if (opposite) {
-          updatedValues = updatedValues.filter((v) => v !== opposite);
-        }
-
-        if (!updatedValues.includes(value)) {
-          updatedValues.push(value);
-        }
-      } else {
-        updatedValues = updatedValues.filter((v) => v !== value);
+    if (checked) {
+      const opposite = opposites[value];
+      if (opposite) {
+        updatedValues = updatedValues.filter((v) => v !== opposite);
       }
+      if (!updatedValues.includes(value)) {
+        updatedValues.push(value);
+      }
+    } else {
+      updatedValues = updatedValues.filter((v) => v !== value);
+    }
 
-      dispatch(setFilter({ equipment: updatedValues }));
-    });
+    setEquipment(updatedValues);
   };
 
   return (
-    <div className={css["side-menu"]}>
+    <form className={css["side-menu"]} onSubmit={handleDataSubmit}>
+      {/* Location */}
       <div>
-        <label
-          className={css["location-title"]}
-          id="location"
-          htmlFor="location"
-        >
+        <label className={css["location-title"]} htmlFor="location">
           Location
         </label>
         <div className={css["input-icon-container"]}>
@@ -74,40 +76,46 @@ export default function SideMenu() {
           />
           <select
             id="location"
-            onChange={(e) => handleChange(e, "location")}
+            onChange={(e) => handleFieldChange(e, "location")}
             className={css["location-select"]}
-            type="text"
+            value={typeof location === `string` ? location : ""}
           >
-            <option className={css.option} value={""}></option>
-            {locations.map((location) => {
-              return (
-                <option key={location} className={css.option} value={location}>
-                  {swapTwoWords(location)}
-                </option>
-              );
-            })}
+            <option className={css.option} value=""></option>
+            {locations.map((loc) => (
+              <option key={loc} className={css.option} value={loc}>
+                {swapTwoWords(loc)}
+              </option>
+            ))}
           </select>
         </div>
       </div>
+
+      {/* Filters */}
       <div className={css["filters-container"]}>
         <p className={css["filters-title"]}>Filters</p>
+
+        {/* Equipment */}
         <div>
           <h3 className={css["category-title"]}>Vehicle equipment</h3>
-          <SideMenuEquipment
-            typeProp={equipmentProp}
-            onChange={(e) => handleSelectChange(e, equipmentProp)}
+          <SideMenuFilters
+            typeProp="equipment"
+            equipmentFilter={equipment}
+            onChange={handleEquipmentChange}
           />
         </div>
 
+        {/* Vehicle Type */}
         <div>
           <h3 className={css["category-title"]}>Vehicle type</h3>
-          <SideMenuEquipment
-            typeProp={typeProp}
-            onChange={(e) => handleChange(e, typeProp)}
+          <SideMenuFilters
+            typeProp="type"
+            typeFilter={type}
+            onChange={(e) => handleFieldChange(e, "type")}
           />
         </div>
       </div>
-      <Button>Search</Button>
-    </div>
+
+      <Button type="submit">Search</Button>
+    </form>
   );
 }

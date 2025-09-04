@@ -23,25 +23,16 @@ const CamperPage = () => {
   const loading = useSelector(selectIsLoading);
 
   useEffect(() => {
-    dispatch(fetchById(id));
+    if (id) dispatch(fetchById(id));
   }, [dispatch, id]);
 
-  if (!camper?.gallery) return null;
-
-  const { name, rating, reviews, location, price, gallery, description } =
-    camper;
+  const { gallery, description } = camper;
 
   return (
     <>
       {loading && <Loader />}
       <div className={css["camper-page-container"]}>
-        <Header
-          name={name}
-          rating={rating}
-          reviews={reviews}
-          location={location}
-          price={price}
-        />
+        <Header camper={camper} />
 
         <ImageGallery gallery={gallery} />
 
@@ -60,7 +51,9 @@ const CamperPage = () => {
 
 export default CamperPage;
 
-const Header = ({ name, rating, reviews, location, price }) => (
+const Header = ({
+  camper: { name = "", rating = 0, reviews = [], location = "", price = "" },
+}) => (
   <div className={css["name-reviews-price-container"]}>
     <h2 className={css.name}>{name}</h2>
     <div className={css["reviews-location-container"]}>
@@ -77,7 +70,7 @@ const Header = ({ name, rating, reviews, location, price }) => (
   </div>
 );
 
-const ImageGallery = ({ gallery }) => (
+const ImageGallery = ({ gallery = [] }) => (
   <ul className={css["images-container"]}>
     {gallery.map((image, index) => (
       <li key={index} className={css["image-container"]}>

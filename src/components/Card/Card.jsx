@@ -15,28 +15,18 @@ export default function Card({ camper }) {
     id,
     name,
     location,
-    reviews = 0,
+    reviews = [],
     description,
     price,
     rating,
     gallery,
-    tv,
-    transmission,
-    AC,
-    kitchen,
-    engine,
-    bathroom,
-    gas,
-    refrigerator,
-    water,
-    microwave,
   } = camper;
+
   const dispatch = useDispatch();
   const featuredCampers = useSelector(selectFeatured);
+  const isFavorite = featuredCampers.some((item) => item.id === camper.id);
 
   const handleAddFavorite = () => {
-    const isFavorite = featuredCampers.some((item) => item.id === camper.id);
-
     if (isFavorite) {
       dispatch(deleteFeatured(camper.id));
     } else {
@@ -47,7 +37,11 @@ export default function Card({ camper }) {
   return (
     <>
       <div className={css["card-container"]}>
-        <img className={css.image} src={gallery[0].thumb} alt={description} />
+        <img
+          className={css.image}
+          src={gallery[0]?.thumb}
+          alt={`Image of ${name}`}
+        />
         <div className={css["info-container"]}>
           <div className={css["name-price-container"]}>
             <h3 className={css.name}>{name}</h3>
@@ -55,11 +49,7 @@ export default function Card({ camper }) {
               <p>€{price},00</p>
               <button type="button" onClick={handleAddFavorite}>
                 <IconHeart
-                  className={clsx(
-                    css.icon,
-                    featuredCampers.some((item) => item.id === camper.id) &&
-                      css.featured
-                  )}
+                  className={clsx(css.icon, isFavorite && css.featured)}
                 />
               </button>
             </div>
@@ -68,26 +58,19 @@ export default function Card({ camper }) {
           <div className={css["reviews-location-container"]}>
             <IconStar className={css.star} />
 
-            <span>
+            <p>
               {rating}({reviews.length} Reviews)
-              <IconLocation className={css["icon-location"]} />{" "}
-              {swapTwoWords(location)}
-            </span>
+              <IconLocation className={css["icon-location"]} /> 
+              <span className={css.location}>{swapTwoWords(location)}</span>
+            </p>
           </div>
           <span className={css.description}>{description}</span>
-          <Categories
-            engine={engine}
-            transmission={transmission}
-            tv={tv}
-            kitchen={kitchen}
-            AC={AC}
-            bathroom={bathroom}
-            gas={gas}
-            fridge={refrigerator}
-            water={water}
-            microwave={microwave}
-          />
-          <Button onClick={() => window.open(`/catalog/${id}`, "_blank")}>
+          <Categories camper={camper} />
+          <Button
+            onClick={() =>
+              window.open(`/catalog/${id}`, "_blank", "noopener,noreferrer")
+            }
+          >
             Show more
           </Button>
         </div>

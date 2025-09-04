@@ -1,22 +1,17 @@
-import { useId } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import DatePicker from "react-datepicker";
+import { useSelector } from "react-redux";
 
 import Button from "../../particles/Button";
 import { formSchema } from "../../helpers";
+import { selectCamper } from "../../redux/selectors";
 
 import "react-datepicker/dist/react-datepicker.css";
 import "./CustomDateRangePicker.css";
 import css from "./CamperForm.module.css";
-import { useSelector } from "react-redux";
-import { selectCamper } from "../../redux/selectors";
 
 export default function CamperForm() {
-  const nameFieldId = useId();
-  const emailFieldId = useId();
-  const bookingDateId = useId();
-  const commentFieldId = useId();
   const camper = useSelector(selectCamper);
 
   const initialValues = {
@@ -27,29 +22,21 @@ export default function CamperForm() {
   };
 
   const handleSubmit = (values, actions) => {
-    console.log("Yaaay");
     toast.success(
       `Successful! Your ${camper.name} on ${values.bookingDate.toLocaleDateString(
         "en-GB",
-        {
-          day: "numeric",
-          month: "long",
-          year: "numeric",
-        }
+        { day: "numeric", month: "long", year: "numeric" }
       )} is almost ready!`,
-      {
-        duration: 4000,
-      }
+      { duration: 4000 }
     );
     actions.setSubmitting(false);
-
     actions.resetForm();
   };
 
   return (
     <div className={css["form-container"]}>
-      <h3 className={css.title}>Book your campervan now</h3>
-      <p className={css.description}>
+      <h3 className={css["title"]}>Book your campervan now</h3>
+      <p className={css["description"]}>
         Stay connected! We are always ready to help you.
       </p>
 
@@ -66,7 +53,6 @@ export default function CamperForm() {
                   className={css.field}
                   type="text"
                   name="name"
-                  id={nameFieldId}
                   placeholder="Name*"
                 />
                 <ErrorMessage
@@ -81,7 +67,6 @@ export default function CamperForm() {
                   className={css.field}
                   type="email"
                   name="email"
-                  id={emailFieldId}
                   placeholder="Email*"
                 />
                 <ErrorMessage
@@ -93,7 +78,6 @@ export default function CamperForm() {
 
               <div>
                 <DatePicker
-                  id={bookingDateId}
                   selected={values.bookingDate}
                   onChange={(date) => setFieldValue("bookingDate", date)}
                   placeholderText="Booking date*"
@@ -108,14 +92,12 @@ export default function CamperForm() {
               <div>
                 <Field
                   className={css["comment-field"]}
-                  type="text"
                   name="comment"
-                  id={commentFieldId}
                   placeholder="Comment*"
                   as="textarea"
                 />
                 <ErrorMessage
-                  className={css.error}
+                  className="error"
                   name="comment"
                   component="span"
                 />

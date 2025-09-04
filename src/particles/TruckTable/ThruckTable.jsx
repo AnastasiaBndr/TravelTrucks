@@ -2,12 +2,7 @@ import css from "./TruckTable.module.css";
 import { capitalizeFirstLetter } from "../../helpers";
 
 export default function TruckTable({
-  width,
-  tank,
-  height,
-  form,
-  length,
-  consumption,
+  camper: { width, tank, height, form, length, consumption },
 }) {
   return (
     <table>

@@ -25,7 +25,7 @@ export const selectFilteredCampers = createSelector(
                     } else if (t === "petrol") {
                         return camper.engine === "petrol"
                     } else if (t === "manual") {
-                        return camper.engine === "manual"
+                        return camper.transmission === "manual"
                     } else if (t === "automatic") {
                         return camper.transmission === "automatic"
                     } else if (t === "ac") {

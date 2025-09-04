@@ -16,44 +16,41 @@ import {
 } from "../../redux/selectors";
 
 export default function Catalog({ loadMore }) {
-  const filteredCampers = useSelector(selectFilteredCampers || []);
-  const campers = useSelector(selectCampers);
-  const totalHits = useSelector(selectTotal);
+  const filteredCampers = useSelector(selectFilteredCampers) || [];
+  const campers = useSelector(selectCampers) || [];
+  const totalHits = useSelector(selectTotal) ?? 0;
   const loading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
-  
+
   return (
-    <>
-      <div className={css["catalog-button-container"]}>
-        <div className={css["catalog-container"]}>
-          <SideMenu />
-          {filteredCampers.length > 0 && (
-            <div>
-              <ul className={css["catalog-items"]}>
-                {filteredCampers.map((camper) => {
-                  return (
-                    <li key={camper.id}>
-                      <Card camper={camper} />
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          )}
+    <div className={css["catalog-button-container"]}>
+      <div className={css["catalog-container"]}>
+        <SideMenu />
+        {filteredCampers.length > 0 && (
+          <ul className={css["catalog-items"]}>
+            {filteredCampers.map((camper) => {
+              return (
+                <li key={camper.id}>
+                  <Card camper={camper} />
+                </li>
+              );
+            })}
+          </ul>
+        )}
 
-          {(filteredCampers.length === 0 || error) && <Error />}
-        </div>
-        {loading && <Loader />}
-
-        {!loading &&
-          campers.length < totalHits &&
-          campers.length > 0 &&
-          !error && (
-            <button className={css["load-more-button"]} onClick={loadMore}>
-              {"Load more"}
-            </button>
-          )}
+        {!loading && (filteredCampers.length === 0 || error) && <Error />}
       </div>
-    </>
+      {loading && <Loader />}
+
+      {!loading &&
+        campers.length < totalHits &&
+        campers.length > 0 &&
+        filteredCampers.length > 0 &&
+        !error && (
+          <button className={css["load-more-button"]} onClick={loadMore}>
+            {"Load more"}
+          </button>
+        )}
+    </div>
   );
 }

@@ -1,8 +1,10 @@
 import { NavLink } from "react-router";
-import css from "./Header.module.css";
-import clsx from "clsx";
 import { useSelector } from "react-redux";
+import clsx from "clsx";
+
 import { selectFeatured } from "../../redux/selectors";
+
+import css from "./Header.module.css";
 
 const buildLinkClass = ({ isActive }) => {
   return clsx(css.link, isActive && css.active);

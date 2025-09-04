@@ -13,24 +13,22 @@ import {
 } from "../../redux/selectors";
 
 export default function FeaturedPage() {
-  const campers = useSelector(selectFeatured || []);
-  const loading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
+  const campers = useSelector(selectFeatured) || [];
+  const loading = useSelector(selectIsLoading) || false;
+  const error = useSelector(selectError) || false;
 
   return (
     <>
       {campers.length > 0 && (
-        <div>
-          <ul className={css["catalog-items"]}>
-            {campers.map((camper) => {
-              return (
-                <li key={camper.id}>
-                  <Card camper={camper} />
-                </li>
-              );
-            })}
-          </ul>
-        </div>
+        <ul className={css["catalog-items"]}>
+          {campers.map((camper) => {
+            return (
+              <li key={camper.id}>
+                <Card camper={camper} />
+              </li>
+            );
+          })}
+        </ul>
       )}
 
       {(campers.length === 0 || error) && <Error />}
