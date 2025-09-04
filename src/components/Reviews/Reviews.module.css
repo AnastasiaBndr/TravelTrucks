@@ -1,9 +1,9 @@
-@import url('../../assets/variables.css');
-.reviews-container{
-    display: flex;
-    flex-direction: column;
-    gap:44px;
-    width: 631px;
+@import url("../../assets/variables.css");
+.reviews-container {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  width: 320px;
 }
 .icon use {
   fill: var(--star-icon-gray);
@@ -13,32 +13,60 @@
   fill: var(--star-icon-color);
 }
 
-.stars-container{
-    display: flex;
-    gap:4px;
+.stars-container {
+  display: flex;
+  gap: 2px;
 }
 
-.avatar{
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--star-icon-gray);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--avatar-letter-color);
+}
+
+.avatar-name-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.comment {
+  color: var(--description-color);
+  font-size: 10px;
+}
+
+@media (min-width: 1440px) {
+  .reviews-container {
+    gap: 44px;
+    width: 631px;
+  }
+  .stars-container {
+    gap: 4px;
+  }
+
+  .avatar {
     width: 60px;
     height: 60px;
-    border-radius: 50%;
-    background-color: var(--star-icon-gray);
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
-    font-weight: 600;
     font-size: 24px;
-    color: var(--avatar-letter-color);
-}
+  }
 
-.avatar-name-container{
-    display: flex;
-    align-items: center;
-    gap:16px;
+  .avatar-name-container {
+    gap: 16px;
     margin-bottom: 16px;
-}
+  }
 
-.comment{
+  .comment {
     color: var(--description-color);
+    font-size: 16px;
+  }
 }

@@ -5,7 +5,7 @@ export default function TruckTable({
   camper: { width, tank, height, form, length, consumption },
 }) {
   return (
-    <table>
+    <table className={css.table}>
       <caption className={css.title}>Vehicle details</caption>
       <tbody>
         <tr>

@@ -1,29 +1,55 @@
 @import url("../../assets/variables.css");
-
+.table{
+  font-size:10px;
+}
 .title {
   font-weight: 600;
   width: 100%;
-  font-size: 20px;
+  font-size: 12px;
   text-align: left;
 }
 .title::after {
   content: "";
   display: block;
   position: absolute;
-  margin-top: 24px;
+  margin-top: 12px;
   height: 1px;
-  width: 527px;
+  width: 270px;
   background-color: var(--border-color);
 }
 
 td {
-  padding: 8px;
+  padding: 4px;
   font-weight: 500;
 }
 .first {
-  padding-top: 48px;
+  padding-top: 24px;
 }
 
 tr td:nth-child(2) {
   text-align: right;
+}
+
+@media (min-width: 1440px) {
+  .title {
+    width: 100%;
+    font-size: 20px;
+    text-align: left;
+  }
+
+  .title::after {
+    margin-top: 24px;
+    width: 527px;
+  }
+
+  td {
+  padding: 8px;
+
+}
+.first {
+  padding-top: 48px;
+}
+.table{
+  font-size:12px;
+}
 }

@@ -2,12 +2,20 @@
 
 
 .features-container {
-  width: 631px;
+  width: 320px;
   background-color: var(--header-background);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 44px 52px;
+  padding: 22px 26px;
   border-radius: 10px;
 }
+
+@media (min-width: 1440px) {
+  .features-container {
+  width: 631px;
+  padding: 44px 52px;
+}
+}
+

@@ -1,4 +1,4 @@
-@import url('../../assets/variables.css');
+@import url("../../assets/variables.css");
 
 .options {
   display: flex;
@@ -7,8 +7,6 @@
   width: 100%;
   margin-bottom: 12px;
   font-size: 8px;
- 
-
 }
 .option-item {
   display: flex;
@@ -17,34 +15,27 @@
   background-color: var(--option-color);
   border-radius: 100px;
   padding: 6px 9px;
-
 }
 
-.option-icon{
+.option-icon {
   width: 10px;
   height: 10px;
 }
 
 @media (min-width: 1440px) {
-.options {
-  gap: 8px;
-  width: 450px;
-  margin-bottom: 24px;
-  font-size: 12px;
-
+  .options {
+    gap: 8px;
+    width: 450px;
+    margin-bottom: 24px;
+    font-size: 16px;
+  }
+  .option-item {
+    display: flex;
+    gap: 8px;
+    padding: 12px 18px;
+  }
+  .option-icon {
+    width: 20px;
+    height: 20px;
+  }
 }
-.option-item {
-  display: flex;
-  gap: 8px;
-  padding: 12px 18px;
-
-}
-.option-icon{
-  width: 20px;
-  height: 20px;
-}
-
-
-}
-
-
