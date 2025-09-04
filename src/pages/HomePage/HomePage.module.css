@@ -26,7 +26,7 @@
 .content-container{
   color: var(--header-background);
   box-sizing: border-box;
-  padding: 64px;
+  padding: 24px;
   transform: scaleX(-1);
   position: relative;
   z-index: 999;
@@ -37,13 +37,13 @@
 }
 
 .title{
-  font-size: 48px;
+  font-size: 18px;
   font-weight: 600;
 }
 
 .description{
-  font-size: 24px;
-  margin-bottom: 40px;
+  font-size: 10px;
+  margin-bottom: 10px;
 }
 
 @media (min-width: 1440px) {
@@ -51,4 +51,18 @@
     max-width: 1440px;
       height: 696px;
   }
+
+  .title{
+  font-size: 48px;
+}
+.description{
+  font-size: 24px;
+    margin-bottom: 40px;
+
+}
+.content-container{
+
+  padding: 64px;
+
+}
 }

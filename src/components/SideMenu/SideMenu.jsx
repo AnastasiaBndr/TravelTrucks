@@ -115,7 +115,7 @@ export default function SideMenu() {
         </div>
       </div>
 
-      <Button type="submit">Search</Button>
+      <Button type="submit" className={css["side-menu-button"]}>Search</Button>
     </form>
   );
 }

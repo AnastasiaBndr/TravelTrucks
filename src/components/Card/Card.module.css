@@ -3,12 +3,12 @@
 .card-container {
   display: flex;
   box-sizing: border-box;
-  width: 888px;
-  min-height: 368px;
+  width: 340px;
+  min-height: 128px;
   border: 1px solid var(--border-color);
   border-radius: 20px;
-  padding: 24px;
-  gap: 24px;
+  padding: 12px;
+  gap: 12px;
 }
 
 .location{
@@ -16,27 +16,27 @@
 }
 
 .name {
-  font-size: 24px;
+  font-size: 12px;
   font-weight: 600;
   font-style: "Semi Bold";
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 .image {
-  width: 292px;
-  min-height: 100%;
+  width: 100px;
+  height: 150px;
   object-fit: cover;
   border-radius: 10px;
 }
 .name-price-container {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
 }
 .icon {
-  width: 24px;
-  height: 21px;
-  margin-left: 13px;
+  width: 11px;
+  height: 12px;
+  margin-left: 5px;
 }
 .icon use {
   fill: currentColor;
@@ -66,11 +66,12 @@
 
 .name-price-container span {
   font-weight: 600;
-  font-size: 24px;
+  font-size: 12px;
 }
 
 .reviews-location-container {
-  margin-bottom: 24px;
+  font-size: 8px;
+  margin-bottom: 8px;
 }
 
 .star use {
@@ -84,9 +85,57 @@
 .description {
   color: var(--description-color);
   display: inline-block;
-  max-width: 525px;
+  max-width: 200px;
   white-space: nowrap;
+  font-size: 8px;
   overflow: hidden;
   text-overflow: ellipsis;
+  margin-bottom: 10px;
+}
+
+@media (min-width: 1440px) {
+.card-container {
+
+  width: 888px;
+  min-height: 368px;
+  padding: 24px;
+  gap: 24px;
+}
+
+.name {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.reviews-location-container {
   margin-bottom: 24px;
+    font-size: 16px;
+}
+
+.image {
+  width: 292px;
+  height: 320px;
+  min-height: 100%;
+}
+
+
+.name-price-container span {
+  font-size: 24px;
+}
+
+.name-price-container {
+  font-size: 24px;
+}
+
+.description {
+  max-width: 525px;
+  font-size: 16px;
+  margin-bottom: 24px;
+}
+
+.icon {
+  width: 24px;
+  height: 21px;
+  margin-left: 13px;
+}
 }

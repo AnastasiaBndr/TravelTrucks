@@ -1,26 +1,28 @@
-@import '../../assets/variables.css';
+@import "../../assets/variables.css";
 
-
-.catalog-button-container{
-  padding-top:48px;
-  padding-bottom: 48px;
+.catalog-button-container {
+width: 340px;
+  padding-top: 24px;
+  padding-bottom: 24px;
 }
 .catalog-container {
   display: flex;
-  margin-bottom: 40px;
-  gap:64px;
+  flex-direction: column;
+  margin-bottom: 20px;
+  gap: 42px;
 }
 
 .catalog-items {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 12px;
 }
 
 .load-more-button {
   margin: 0 auto;
-  width: 173px;
-  height: 56px;
+  width: 80px;
+  height: 30px;
+  font-size: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,4 +37,24 @@
 .load-more-button:focus {
   cursor: pointer;
   border-color: var(--active-color);
+}
+
+@media (min-width: 1440px) {
+  .catalog-button-container {
+    width: 1315px;
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+  .catalog-container {
+    flex-direction: row;
+    margin-bottom: 40px;
+    gap: 64px;
+  }
+  .catalog-items {
+    gap: 24px;
+  }
+  .load-more-button {
+    width: 173px;
+    height: 56px;font-size: 16px;
+  }
 }

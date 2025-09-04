@@ -4,14 +4,14 @@
   display: grid;
   width: 100%;
   grid-template-columns: repeat(3, 1fr);
-  padding: 24px 64px;
+  padding: 12px 32px;
   box-sizing: border-box;
   background-color: var(--header-background);
 }
 
 .travel-trucks {
   font-weight: 900;
-  font-size: 20px;
+  font-size: 12px;
 }
 
 .travel {
@@ -23,13 +23,13 @@
   align-self: center;
 }
 
-.header-container :nth-child(3){
+.header-container :nth-child(3) {
   justify-self: right;
 }
 
 .links-container {
   display: flex;
-  gap: 32px;
+  gap: 10px;
 }
 
 .link:hover,
@@ -38,10 +38,28 @@
 }
 
 .links-container a {
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 500;
 }
 
 .active {
   color: var(--active-color);
+}
+
+@media (min-width: 1440px) {
+  .header-container {
+    padding: 24px 64px;
+  }
+
+  .travel-trucks {
+    font-size: 20px;
+  }
+
+  .links-container {
+    gap: 32px;
+  }
+
+  .links-container a {
+    font-size: 16px;
+  }
 }

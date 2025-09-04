@@ -29,7 +29,7 @@ export default function SideMenuFilters({
               checked={isChecked}
             />
             <label htmlFor={option.id} className={css.item}>
-              <option.Icon width={32} height={32} />
+              <option.Icon className={css["menu-icon"] } width={32} height={32} />
               {option.label}
             </label>
           </li>

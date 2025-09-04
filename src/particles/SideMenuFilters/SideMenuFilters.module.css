@@ -2,34 +2,40 @@
 
 .vehicle-container {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 24px;
+  gap: 6px;
+  margin-top: 12px;
 }
 
 .input {
   display: none;
 }
 .item {
-  width: 112px;
-  height: 96px;
+  width: 66px;
+  height: 48px;
   box-sizing: border-box;
   display: flex;
   text-align: center;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
 
   border: 1px solid var(--border-color);
   border-radius: 12px;
 
-  font-size: 16px;
+  font-size: 10px;
   font-weight: 500;
 
   cursor: pointer;
 
   transition: var(--border-color-transition);
+}
+
+.menu-icon{
+  width: 15px;
+  height: 15px;
 }
 
 .item:hover,
@@ -40,3 +46,28 @@
 .input:checked + .item {
   border-color: var(--avatar-letter-color);
 }
+
+@media (min-width: 1440px) {
+.vehicle-container {
+
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.item {
+  width: 112px;
+  height: 96px;
+
+  gap: 4px;
+
+  font-size: 16px;
+
+}
+
+.menu-icon{
+  width: 30px;
+  height: 30px;
+}
+
+}
+
