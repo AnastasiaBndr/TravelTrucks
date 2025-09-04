@@ -1,10 +1,35 @@
 @import "../../assets/variables.css";
 
 .catalog-button-container {
-width: 340px;
+  width: 340px;
   padding-top: 24px;
   padding-bottom: 24px;
 }
+.your-search-for {
+  display: flex;
+  gap: 8px;
+  min-width: 100%;
+  flex-direction: row;
+  margin-bottom: 12px;
+}
+
+.your-search-for ul,
+.your-search-for p {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  font-size: 10px;
+}
+.search-item {
+  display: flex;
+  gap: 4px;
+  width: fit-content;
+  align-items: center;
+  background-color: var(--option-color);
+  border-radius: 100px;
+  padding: 6px 9px;
+}
+
 .catalog-container {
   display: flex;
   flex-direction: column;
@@ -42,9 +67,9 @@ width: 340px;
 @media (min-width: 1440px) {
   .catalog-button-container {
     width: 1315px;
-  padding-top: 48px;
-  padding-bottom: 48px;
-}
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
   .catalog-container {
     flex-direction: row;
     margin-bottom: 40px;
@@ -55,6 +80,20 @@ width: 340px;
   }
   .load-more-button {
     width: 173px;
-    height: 56px;font-size: 16px;
+    height: 56px;
+    font-size: 16px;
+  }
+
+  .search-item {
+    padding: 12px 18px;
+  }
+  .your-search-for {
+    gap:12px;
+    margin-bottom: 12px;
+  }
+  .your-search-for ul,
+  .your-search-for p {
+    gap: 12px;
+    font-size: 16px;
   }
 }

@@ -13,6 +13,7 @@ import {
   selectTotal,
   selectError,
   selectCampers,
+  selectFilter,
 } from "../../redux/selectors";
 
 export default function Catalog({ loadMore }) {
@@ -21,24 +22,48 @@ export default function Catalog({ loadMore }) {
   const totalHits = useSelector(selectTotal) ?? 0;
   const loading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
+  const {
+    equipment = [],
+    location = "",
+    type = "",
+  } = useSelector(selectFilter);
 
   return (
     <div className={css["catalog-button-container"]}>
       <div className={css["catalog-container"]}>
         <SideMenu />
-        {filteredCampers.length > 0 && (
-          <ul className={css["catalog-items"]}>
-            {filteredCampers.map((camper) => {
-              return (
-                <li key={camper.id}>
-                  <Card camper={camper} />
-                </li>
-              );
-            })}
-          </ul>
-        )}
+        <div>
+          <div className={css["your-search-for"]}>
+            {(equipment.length > 0 || type != "" || location != "") && (
+              <>
+                {equipment.length > 0 && (
+                  <ul>
+                    {equipment.map((item) => {
+                      return <li key={ item} className={css["search-item"]}>{item}</li>;
+                    })}
+                  </ul>
+                )}
+                {location != "" && (
+                  <p className={css["search-item"]}>{location}</p>
+                )}
+                {type != "" && <p className={css["search-item"]}>{type}</p>}
+              </>
+            )}
+          </div>
 
-        {!loading && (filteredCampers.length === 0 || error) && <Error />}
+          {filteredCampers.length > 0 && (
+            <ul className={css["catalog-items"]}>
+              {filteredCampers.map((camper) => {
+                return (
+                  <li key={camper.id}>
+                    <Card camper={camper} />
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+          {!loading && (filteredCampers.length === 0 || error) && <Error />}
+        </div>
       </div>
       {loading && <Loader />}
 

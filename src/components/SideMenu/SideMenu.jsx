@@ -33,6 +33,9 @@ export default function SideMenu() {
   const handleDataSubmit = (e) => {
     e.preventDefault();
     dispatch(setFilter({ equipment, location, type }));
+    setEquipment([]);
+    setLocation("");
+    setType("");
   };
 
   const handleFieldChange = (e, field) => {
