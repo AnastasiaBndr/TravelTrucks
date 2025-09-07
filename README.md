@@ -1,12 +1,29 @@
-# React + Vite
+# Travel Trucks
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Have you always dreamed of travelling long distances and having everything you need close to hand? Then you've come to the right place! TravelTrucks will help you find the best vehicle for your needs. Whether you need a panel truck, a fully integrated machine or an alcove one with everything you need for your journey, we can help. Visit our website to find your travel truck! 
 
-Currently, two official plugins are available:
+- [Main website page](https://travel-trucks-blond-three.vercel.app/) 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+__*Everything is made for learning purpose__
 
-## Expanding the ESLint configuration
+## Pages overview
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Main page
+![Main page](./readmeFiles/main.png)
+
+Catalog
+![Catalog](./readmeFiles/catalog.png)
+
+Filters
+![Alt text](./readmeFiles/filters.png)
+
+Travel truck page
+![Alt text](./readmeFiles/travelTruckPage.png)
+
+Reviews
+![Alt text](./readmeFiles//reviews.png)
+
+Featured trucks
+![Alt text](./readmeFiles/featured.png)
+
+
