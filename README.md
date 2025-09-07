@@ -26,4 +26,7 @@ Reviews
 Featured trucks
 ![Alt text](./readmeFiles/featured.png)
 
+Optimised for smartphones!
+![Alt text](./readmeFiles/smartphone.png)
+
 
