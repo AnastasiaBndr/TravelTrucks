@@ -29,4 +29,6 @@ Featured trucks
 Optimised for smartphones!
 ![Alt text](./readmeFiles/smartphone.png)
 
+## Installation 
 
+Use `npm install` to install all dependencies for the project
